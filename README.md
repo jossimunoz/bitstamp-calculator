@@ -22,5 +22,11 @@ ethbtc | Ethereum / Bitcoin
 bchusd | Bitcoin Cash / Dolar
 bcheur | Bitcoin Cash / Euro
 bchbtc | Bitcoin Cash / Bitcoin
+
+
+
+#### Usage in a terminal ####
+
+    Markup : python calculator.py
        
     
