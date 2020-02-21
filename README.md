@@ -25,8 +25,7 @@ bchbtc | Bitcoin Cash / Bitcoin
 
 
 
-#### Usage in a terminal ####
+## Usage in a terminal
 
-    Markup : python calculator.py
-       
-    
+    $ python calculator.py
+
