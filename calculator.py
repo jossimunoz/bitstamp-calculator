@@ -10,9 +10,36 @@ choice = input("Enter choice [btcusd]:") or "btcusd"
 
 if choice in currency_pair:
 
-    operation = input("operation you want to do? buy/sell [buy]: ") or "buy".lower() 
+    print(bcolors.OKGREEN + "Types of operations" + bcolors.ENDC)
 
-    if operation == 'sell':
+    print("0. Buy (market price)")
+    print("1. Sell (market price)")
+    
+    operation = float(input(bcolors.OKGREEN + "Operation you want to do? [0]: " + bcolors.ENDC) or 0)
+
+    if operation == 0:
+
+        # getting the currency separately Ex. BTCUSD > ['BTC', 'USD']
+
+        currency_pair = [choice[0:3].upper(), choice[3:6].upper()]
+
+        amount = float(input("Enter Amount (" + currency_pair[1] + "): "))
+
+        currency_pair_amount = api.getJSON(choice)
+
+        if currency_pair_amount:
+
+            print(bcolors.OKGREEN + "PURCHASE PRICE: " + currency_pair_amount['ask'] + bcolors.ENDC)
+            print(bcolors.OKGREEN + "TRANSACTION FEE: " + str(transaction_fee) + bcolors.ENDC)
+            print(bcolors.OKGREEN + "YOU GET: " + currency_pair[0] + " " + buy(amount, float(currency_pair_amount['ask'])) + bcolors.ENDC)
+
+        else:
+
+            print(bcolors.FAIL + "Bitstamp API Error" + bcolors.ENDC)
+            
+
+
+    else:
 
         # getting the currency separately Ex. BTCUSD > ['BTC', 'USD']
 
@@ -40,25 +67,9 @@ if choice in currency_pair:
 
             print(bcolors.FAIL + "Bitstamp API Error" + bcolors.ENDC)
 
-
-    else:
-
-        currency_pair = [choice[0:3].upper(), choice[3:6].upper()]
+        
        
 
-        amount = float(input("Enter Amount (" + currency_pair[1] + "): "))
-
-        currency_pair_amount = api.getJSON(choice)
-
-        if currency_pair_amount:
-
-            print(bcolors.OKGREEN + "PURCHASE PRICE: " + currency_pair_amount['ask'] + bcolors.ENDC)
-            print(bcolors.OKGREEN + "TRANSACTION FEE: " + str(transaction_fee) + bcolors.ENDC)
-            print(bcolors.OKGREEN + "YOU GET: " + currency_pair[0] + " " + buy(amount, float(currency_pair_amount['ask'])) + bcolors.ENDC)
-
-        else:
-
-            print(bcolors.FAIL + "Bitstamp API Error" + bcolors.ENDC)
-            
+        
 else:
     print(bcolors.FAIL + "Currency Pair does not exist" + bcolors.ENDC)    
