@@ -2,7 +2,12 @@
 
 Currency buy and sell calculator for bitstamp.
 
-currencies accepted by bitstamp:
 
- Markup : * btcusd
-          * btceur
+Currencies accepted by bitstamp:
+   
+Currency Pair  | Name Pair
+------------- | -------------
+BTCUSD        | BITCOIN / DOLAR
+BTCEUR | BITCOIN / EURO
+       
+    
